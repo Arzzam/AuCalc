@@ -5,4 +5,4 @@
 
 ##Authors
  - [NanthaKumar](https://github.com/nknantha)
- - [NafilArzzam](https://github.com/Arzzam)
+ - [Nafil Arzzam](https://github.com/Arzzam)
