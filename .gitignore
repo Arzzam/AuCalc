@@ -1,5 +1,9 @@
 # PyCharm config files.
 .idea/
 
-# sqlite files.
+# Sqlite files.
 db.sqlite3
+
+# Python complied files.
+*__pycache__/
+*.py[cod]
