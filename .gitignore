@@ -1,2 +1,5 @@
 # PyCharm config files.
 .idea/
+
+# sqlite files.
+db.sqlite3
