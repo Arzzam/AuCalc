@@ -3,6 +3,6 @@
     <p align="center">A GPA/CGPA calculator for Anna University.</p>
 </p>
 
-##Authors
+## Authors
  - [NanthaKumar](https://github.com/nknantha)
  - [Nafil Arzzam](https://github.com/Arzzam)
