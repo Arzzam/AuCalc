@@ -3,6 +3,31 @@
     <p align="center">A GPA/CGPA calculator for Anna University.</p>
 </p>
 
+## Instruction
+
+### Installing Dependencies
+
+- For Python Dependencies,
+  ```
+  python -m pip install -r requirements.txt
+  ```
+- For Frontend Dependencies,
+  - cd into frontend directory,
+  ```
+  npm install
+  ```
+
+### Running App
+- To run backend,
+  ```
+  python manage.py runserver
+  ```
+- To run frontend,
+  - cd into frontend directory,
+  ```
+  npm start
+  ```
+
 ## Authors
  - [NanthaKumar](https://github.com/nknantha)
  - [Nafil Arzzam](https://github.com/Arzzam)
