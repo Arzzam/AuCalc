@@ -1,8 +1,4 @@
-from django.http import HttpResponse, JsonResponse
-
-
-def index(request):
-    return HttpResponse("<h1>Backend Running...</h1>")
+from django.http import JsonResponse
 
 
 def degrees(request):

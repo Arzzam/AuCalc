@@ -23,6 +23,7 @@ coverage/
 build/
 
 # misc
+*.bak
 .DS_Store
 .env.local
 .env.development.local
