@@ -6,8 +6,8 @@ def index(request):
 
 
 def degrees(request):
-    data = [
+    data = {"degrees": [
         "Bachelor of Engineering",
         "Bachelor of Technology"
-    ]
+    ]}
     return JsonResponse(data)
