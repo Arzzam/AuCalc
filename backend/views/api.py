@@ -2,7 +2,7 @@ from django.http import JsonResponse
 
 
 def degrees(request):
-    data = {"degrees": [
+    data = {"data": [
         "Bachelor of Engineering",
         "Bachelor of Technology"
     ]}
