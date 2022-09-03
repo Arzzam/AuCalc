@@ -1,7 +1,5 @@
-<p align="center">
-    <h1 align="center">AuCalc</h1>
-    <p align="center">A GPA/CGPA calculator for Anna University.</p>
-</p>
+<h1 align="center">AuCalc</h1>
+<p align="center">A GPA/CGPA calculator for Anna University.</p>
 
 ## Instruction
 
@@ -20,6 +18,7 @@
 ### Running App
 - To run backend,
   ```
+  python manage.py migrate
   python manage.py runserver
   ```
 - To run frontend,
