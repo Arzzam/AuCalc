@@ -24,6 +24,18 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
+        self.stdout.write(
+            self.style.WARNING(
+                "Warning: Do not break the process."
+            )
+        )
+        self.stdout.write(
+            self.style.MIGRATE_HEADING(
+                "Loading data... (This may take while depend on data size.)"
+            )
+        )
+
+
         required_cols = [
             'COURSE CODE',
             'COURSE TITLE',
@@ -34,11 +46,13 @@ class Command(BaseCommand):
             'DEGREE'
         ]
 
-        objs = []
+        processed_df_rows = 0
         total_df_rows = 0
 
         for file in options['files']:
             df = pd.read_csv(file)[required_cols]
+            total_df_rows += len(df.index)
+
             for (_index,
                  course_code,
                  course_title,
@@ -64,20 +78,20 @@ class Command(BaseCommand):
                     name=degree
                 )
 
-                objs.append(SemesterSubject(
+                _, is_created = SemesterSubject.objects.get_or_create(
                     course_id=course_obj,
                     credits=credit,
                     department_id=department_obj,
                     semester=semester,
                     regulation_id=regulation_obj,
                     degree_id=degree_obj
-                ))
-            total_df_rows += len(df.index)
+                )
 
-        processed_df_rows = len(SemesterSubject.objects.bulk_create(objs))
+                processed_df_rows += is_created
+
         self.stdout.write(
             self.style.SUCCESS(
-                f"SUCCESS: {processed_df_rows}/{total_df_rows}"
-                f" are loaded to the database."
+                f"Success: {processed_df_rows}/{total_df_rows}"
+                f" rows are loaded to the database."
             )
         )

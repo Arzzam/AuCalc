@@ -33,7 +33,7 @@ class Course(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=['code', 'title'],
-                                    name='course_unique_constrint')
+                                    name='unique_course_title')
         ]
 
 
@@ -54,3 +54,15 @@ class SemesterSubject(models.Model):
                 self.regulation_id
             ))
         )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=[
+                'course_id',
+                'credits',
+                'department_id',
+                'semester',
+                'regulation_id',
+                'degree_id'
+            ], name='unique_semester_subject_fields')
+        ]
