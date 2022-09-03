@@ -10,13 +10,13 @@ class Command(BaseCommand):
     The input files must follow the format.
     File Type: .csv
     Must have columns:
-     - COURSE CODE : str
-     - COURSE NAME : str
-     - CREDIT : int
-     - DEPARTMENT : str
-     - SEMESTER : int
-     - REGULATION : int
-     - DEGREE : str
+     - COURSE CODE : str not null
+     - COURSE NAME : str not null
+     - CREDIT : int not null
+     - DEPARTMENT : str not null
+     - SEMESTER : int not null
+     - REGULATION : int not null
+     - DEGREE : str not null
     """
 
     def add_arguments(self, parser):
