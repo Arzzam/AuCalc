@@ -12,7 +12,7 @@ class Command(BaseCommand):
     Must have columns:
      - COURSE CODE : str not null
      - COURSE NAME : str not null
-     - CREDIT : int not null
+     - CREDITS : int not null
      - DEPARTMENT : str not null
      - SEMESTER : int not null
      - REGULATION : int not null
@@ -31,19 +31,18 @@ class Command(BaseCommand):
         )
         self.stdout.write(
             self.style.MIGRATE_HEADING(
-                "Loading data... (This may take while depend on data size.)"
+                "Loading data... (Depending on the data size this may take a while.)"
             )
         )
-
 
         required_cols = [
             'COURSE CODE',
             'COURSE TITLE',
             'CREDITS',
-            'DEPARTMENT',
             'SEMESTER',
-            'REGULATION',
-            'DEGREE'
+            'DEPARTMENT',
+            'DEGREE',
+            'REGULATION'
         ]
 
         processed_df_rows = 0
@@ -56,35 +55,36 @@ class Command(BaseCommand):
             for (_index,
                  course_code,
                  course_title,
-                 credit,
-                 department,
+                 credits,
                  semester,
-                 regulation,
-                 degree) in df.itertuples():
+                 department,
+                 degree,
+                 regulation) in df.itertuples():
+
+                regul_obj, _ = Regulation.objects.get_or_create(
+                    year=regulation
+                )
+
+                degree_obj, _ = Degree.objects.get_or_create(
+                    name=degree,
+                    regulation=regul_obj
+                )
+
+                depart_obj, _ = Department.objects.get_or_create(
+                    name=department,
+                    degree=degree_obj
+                )
+
                 course_obj, _ = Course.objects.get_or_create(
                     code=course_code,
                     title=course_title
                 )
 
-                department_obj, _ = Department.objects.get_or_create(
-                    name=department
-                )
-
-                regulation_obj, _ = Regulation.objects.get_or_create(
-                    year=regulation
-                )
-
-                degree_obj, _ = Degree.objects.get_or_create(
-                    name=degree
-                )
-
                 _, is_created = SemesterSubject.objects.get_or_create(
-                    course_id=course_obj,
-                    credits=credit,
-                    department_id=department_obj,
+                    course=course_obj,
+                    credits=credits,
                     semester=semester,
-                    regulation_id=regulation_obj,
-                    degree_id=degree_obj
+                    department=depart_obj
                 )
 
                 processed_df_rows += is_created
