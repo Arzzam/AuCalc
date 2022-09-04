@@ -60,7 +60,6 @@ class Command(BaseCommand):
                  department,
                  degree,
                  regulation) in df.itertuples():
-
                 regul_obj, _ = Regulation.objects.get_or_create(
                     year=regulation
                 )
