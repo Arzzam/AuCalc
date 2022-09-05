@@ -21,6 +21,8 @@ module.exports = {
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        lora: ["Lora", "sans-serif"],
+        dansc: ["Dancing Script", "cursive"],
       },
     },
     screens: {

@@ -25,7 +25,7 @@ function App() {
   // }
 
   return (
-    <>
+    <div className="m-4">
       <Router>
         <Navbar />
         <Routes>
@@ -38,7 +38,7 @@ function App() {
 
       {/* <p>{JSON.stringify(data)}</p>
       <button onClick={fetchData}>Get Data</button> */}
-    </>
+    </div>
   );
 }
 

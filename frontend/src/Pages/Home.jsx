@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Container from "../Components/Container/Container";
-import Button from "@mui/material/Button";
+import Container, { Head1 } from "../Components/Container/Container";
+import { HomeButton } from "../Components/Button/Button";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <Container>
       <div>
-        <h1>AuCalc</h1>
+        <Head1>AuCalc</Head1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -23,13 +23,21 @@ const Home = () => {
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
       </div>
-      <div>
-        <Button id="Gpa" onClick={switchHandler} className="h-10 px-6 font-semibold rounded-md bg-black text-white">
+      <div className=" flex-1 justify-self-center text-center">
+        <button
+          className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
+          id="Gpa"
+          onClick={switchHandler}
+        >
           GPA
-        </Button>
-        <Button id="Cgpa" onClick={switchHandler}>
+        </button>
+        <button
+          className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
+          id="Cgpa"
+          onClick={switchHandler}
+        >
           CGPA
-        </Button>
+        </button>
       </div>
     </Container>
   );
