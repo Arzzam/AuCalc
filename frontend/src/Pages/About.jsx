@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "../Components/Container/Container";
 
-const AboutUs = () => {
+const About = () => {
   return (
     <Container>
       <h1>AuCalc</h1>
@@ -12,4 +12,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default About;
