@@ -41,14 +41,14 @@ const Navbar = () => {
               <NavLink to="/#" activestyle className={`${classNav}`}>
                 Home
               </NavLink>
-              <NavLink to="/Gpa" activestyle className={`${classNav}`}>
+              <NavLink to="/gpa" activestyle className={`${classNav}`}>
                 GPA
               </NavLink>
-              <NavLink to="/Cgpa" activestyle className={`${classNav}`}>
+              <NavLink to="/cgpa" activestyle className={`${classNav}`}>
                 CGPA
               </NavLink>
-              <NavLink to="/Aboutus" activestyle className={`${classNav}`}>
-                About Us
+              <NavLink to="/about" activestyle className={`${classNav}`}>
+                About
               </NavLink>
             </ul>
           </div>
