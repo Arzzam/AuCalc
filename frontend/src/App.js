@@ -10,7 +10,6 @@ import Home from "./Pages/Home";
 function App() {
 
     return (
-        <div className="m-4">
             <Router>
                 <Navbar />
                 <Routes>
@@ -20,7 +19,6 @@ function App() {
                     <Route exact path="/about" element={<About />} />
                 </Routes>
             </Router>
-        </div>
     );
 }
 
