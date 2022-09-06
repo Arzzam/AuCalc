@@ -16,14 +16,16 @@ node_modules/
 frontend/.pnp
 frontend/.pnp.js
 
-# testing
+# Testing
 coverage/
 
-# production
+# Production
 build/
 
-# misc
+# Misc
 *.bak
+*.csv
+*.drawio
 .DS_Store
 .env.local
 .env.development.local
