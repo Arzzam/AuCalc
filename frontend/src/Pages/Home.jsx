@@ -26,14 +26,14 @@ const Home = () => {
       <div className=" flex-1 justify-self-center text-center">
         <button
           className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
-          id="Gpa"
+          id="gpa"
           onClick={switchHandler}
         >
           GPA
         </button>
         <button
           className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
-          id="Cgpa"
+          id="cgpa"
           onClick={switchHandler}
         >
           CGPA
