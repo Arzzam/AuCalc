@@ -3,37 +3,34 @@ import { GpaButton } from "../Components/Button/Button";
 import Container, { Head1 } from "../Components/Container/Container";
 import axios from "axios";
 
-const Gpa = () => {
-  const [getReg, setGetReg] = useState([]);
-  // const [getDep, setGetDep] = useState([]);
-  // const [getSem, setGetSem] = useState([]);
+function Gpa() {
+  const [regulations, setRegulations] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState();
 
-  // const changeHandlerDep = () => {
-  //   setGetDep(getDep);
-  // };
-
-  // const changeHandlerReg = () => {
-  //   setGetReg(getReg);
-  // };
-  const reg = () => {
-    var config = {
+  function getRegulations() {
+    let config = {
       method: "get",
       url: "api/regulations/",
       headers: {},
     };
 
     axios(config)
-      .then(function (response) {
-        setGetReg(response.data);
+      .then((response) => {
+        setRegulations(response.data);
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch((error) => {
+        // console.log(error);
+        setError(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   useEffect(() => {
-    reg();
-  });
+    getRegulations();
+  }, []);
 
   return (
     <Container>
@@ -42,9 +39,9 @@ const Gpa = () => {
         <h4>Select Regulation</h4>
       </div>
       <div className=" flex-1 justify-self-center text-center">
-        {console.log(getReg)}
-        {getReg.map(({ id, data }) => {
-          console.log(data);
+        {loading && <h1>Loading...</h1>}
+        {error && <h1>{error.message}</h1>}
+        {regulations && regulations.map(({ id, data }) => {
           return (
             <button
               className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"

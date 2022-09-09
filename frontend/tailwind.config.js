@@ -16,6 +16,26 @@ module.exports = {
                 lora: ["Lora", "sans-serif"],
                 dansc: ["Dancing Script", "cursive"],
             },
+            animation: {
+                'spin-slow': 'spin 2s linear infinite',  // For Loading animation.
+                'spin-inner': 'spin-inner 1.6s ease-in-out infinite' // For Loading animation.
+            },
+            keyframes: {
+                'spin-inner': {  // For Loading animation.
+                    '0%': {
+                        'stroke-dasharray': '1px, 100px',
+                        'stroke-dashoffset': '0',
+                    },
+                    '50%': {
+                        'stroke-dasharray': '50px, 100px',
+                        'stroke-dashoffset': '-12px',
+                    },
+                    '100%': {
+                        'stroke-dasharray': '50px, 100px',
+                        'stroke-dashoffset': '-62px',
+                    }
+                }
+            }
         },
         screens: {
             'sm': '640px',
