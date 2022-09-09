@@ -7,19 +7,18 @@ import Cgpa from "./Pages/Cgpa";
 import Gpa from "./Pages/Gpa";
 import Home from "./Pages/Home";
 
-function App() {
-
-    return (
-            <Router>
-                <Navbar />
-                <Routes>
-                    <Route exact path="/" element={<Home />} />
-                    <Route exact path="/gpa" element={<Gpa />} />
-                    <Route exact path="/cgpa" element={<Cgpa />} />
-                    <Route exact path="/about" element={<About />} />
-                </Routes>
-            </Router>
-    );
-}
+const App = () => {
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/gpa" element={<Gpa />} />
+        <Route exact path="/cgpa" element={<Cgpa />} />
+        <Route exact path="/about" element={<About />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
