@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { GpaButton } from "../Components/Button/Button";
+// import { GpaButton } from "../Components/Button/Button";
 import Container, { Head1 } from "../Components/Container/Container";
 import axios from "axios";
 
-function Gpa() {
+const Gpa = () => {
   const [regulations, setRegulations] = useState();
+  const [displayReg, setDisplayReg] = useState(true);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
-  function getRegulations() {
+  const [degrees, setdegrees] = useState();
+  const [displayDeg, setDisplayDeg] = useState(true);
+
+  const [departments, setDepartments] = useState();
+  const [displayDep, setDisplayDep] = useState(true);
+
+  const [semesters, setSemesters] = useState();
+  const [displaySem, setDisplaySem] = useState(true);
+
+  const getRegulations = () => {
     let config = {
       method: "get",
       url: "api/regulations/",
@@ -32,6 +42,74 @@ function Gpa() {
     getRegulations();
   }, []);
 
+  const getDegree = (e) => {
+    setDisplayReg(false);
+    let config = {
+      method: "post",
+      url: "api/degrees/",
+      headers: {},
+      data: `{\r\n    "regulation_id": ${e.target.id} \r\n}`,
+    };
+    axios(config)
+      .then((response) => {
+        setdegrees(response.data);
+      })
+      .catch((error) => {
+        // console.log(error);
+        setError(error);
+      })
+      .finally(() => {
+        setLoading(false);
+        // setDisplayDeg(false);
+      });
+  };
+
+  const getDepartment = (e) => {
+    setDisplayDeg(false);
+    let config = {
+      method: "post",
+      url: "api/departments/",
+      headers: {},
+      data: `{\r\n    "degree_id": ${e.target.id} \r\n}`,
+    };
+    axios(config)
+      .then((response) => {
+        setDepartments(response.data);
+      })
+      .catch((error) => {
+        // console.log(error);
+        setError(error);
+      })
+      .finally(() => {
+        setLoading(false);
+        // setDisplayDep(false);
+      });
+  };
+
+  const getSemesters = (e) => {
+    setDisplayDep(false);
+    let config = {
+      method: "post",
+      url: "api/semesters/",
+      headers: {},
+      data: `{\r\n    "department_id": ${e.target.id} \r\n}`,
+    };
+    axios(config)
+      .then((response) => {
+        console.log(response.data);
+        setSemesters(response.data);
+      })
+      .catch((error) => {
+        // console.log(error);
+        setError(error);
+      })
+      .finally(() => {
+        setLoading(false);
+        // setDisplayDep(false);
+      });
+  };
+
+  
   return (
     <Container>
       <div className=" flex-1 justify-self-center text-center">
@@ -41,16 +119,66 @@ function Gpa() {
       <div className=" flex-1 justify-self-center text-center">
         {loading && <h1>Loading...</h1>}
         {error && <h1>{error.message}</h1>}
-        {regulations && regulations.map(({ id, data }) => {
-          return (
-            <button
-              className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
-              key={id}
-            >
-              {data}
-            </button>
-          );
-        })}
+        {regulations &&
+          displayReg &&
+          regulations.map((regulationData) => {
+            return (
+              <button
+                className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
+                key={regulationData.id}
+                id={regulationData.id}
+                onClick={getDegree}
+              >
+                {regulationData.data}
+              </button>
+            );
+          })}
+        {loading && <h1>Loading...</h1>}
+        {error && <h1>{error.message}</h1>}
+        {degrees &&
+          displayDeg &&
+          degrees.map((degreeData) => {
+            return (
+              <button
+                className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
+                key={degreeData.id}
+                id={degreeData.id}
+                onClick={getDepartment}
+              >
+                {degreeData.data}
+              </button>
+            );
+          })}
+        {loading && <h1>Loading...</h1>}
+        {error && <h1>{error.message}</h1>}
+        {departments &&
+          displayDep &&
+          departments.map((departmentData) => {
+            return (
+              <button
+                className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
+                key={departmentData.id}
+                id={departmentData.id}
+                onClick={getSemesters}
+              >
+                {departmentData.data}
+              </button>
+            );
+          })}
+        {semesters &&
+          displaySem &&
+          semesters.map((semesterData) => {
+            return (
+              <button
+                className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
+                key={semesterData.id}
+                id={semesterData.id}
+                // onClick={getSubjects}
+              >
+                {semesterData.data}
+              </button>
+            );
+          })}
       </div>
     </Container>
   );

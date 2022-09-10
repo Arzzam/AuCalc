@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Logo from "../../assets/Asset 1.png";
+// import Logo from "../../assets/Logo.svg";
+// import LogoFont from "../../assets/LogoFont.svg";
 import { OpenSvg, CrossSvg } from "./NavSvg";
+import { LogoFont } from "./NavSvg";
 
 // TODO: add blur on navpane.
 // todo: theme button.
@@ -31,9 +33,13 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 sm:px-8 px-5 py-3 w-full bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
       <div className="container flex-wrap lg:max-w-5xl justify-between mx-auto items-center flex">
-        <NavLink to="/" onClick={collapseNav}>
-          <img className="h-12" src={Logo} alt="Logo" />
-        </NavLink>
+        <div>
+          <NavLink to="/" onClick={collapseNav}>
+            {/* <img className="h-14" src={Logo} alt="Logo" />
+            <img className="h-8 -white" src={LogoFont} alt="Font" /> */}
+            <LogoFont />
+          </NavLink>
+        </div>
         <button
           className="sm:hidden p-2 text-gray-700 rounded-sm outline-none focus:border-gray-400 focus:border"
           onClick={() => setNavbar(!navbar)}
