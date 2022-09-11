@@ -5,7 +5,7 @@ import { OpenSvg, CrossSvg } from "./NavSvg";
 
 // TODO: add blur on navpane.
 // todo: theme button.
-// todo: visual correction svg navpane.
+// todo: add toggle animation.
 
 function NavbarLink(props) {
   return (
@@ -13,7 +13,7 @@ function NavbarLink(props) {
       <NavLink
         to={props.to}
         onClick={props.onClick}
-        className="py-2 sm:p-0 my-0 block rounded sm:hover:bg-transparent sm:hover:text-blue-700 dark:text-gray-400 sm:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white sm:dark:hover:bg-transparent"
+        className="py-2 sm:p-0 my-0 block rounded sm:hover:text-blue-700 dark:text-gray-400 sm:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white sm:hover:bg-transparent"
       >
         {props.child}
       </NavLink>
@@ -29,13 +29,13 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="sticky top-0 sm:px-8 px-5 py-3 w-full bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+    <nav className="sticky top-0 sm:px-8 px-5 py-3 w-full bg-white dark:bg-gray-900">
       <div className="container flex-wrap justify-between mx-auto items-center flex">
         <NavLink to="/" onClick={collapseNav}>
           <img className="h-12" src={Logo} alt="Logo" />
         </NavLink>
         <button
-          className="sm:hidden p-2 text-gray-700 rounded-sm outline-none focus:border-gray-400 focus:border"
+          className="sm:hidden m-2 text-gray-700 rounded-sm dark:text-gray-400 dark:hover:text-white"
           onClick={() => setNavbar(!navbar)}
         >
           {navbar ? <CrossSvg /> : <OpenSvg />}
