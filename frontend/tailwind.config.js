@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-//   darkMode: 'class',    // On dev comment/uncomment this to enable/disable darkmode.
+  // darkMode: 'class',    // On dev comment/uncomment this to enable/disable darkmode.
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   mode: "jit",
   theme: {
@@ -42,8 +42,8 @@ module.exports = {
       sm: "640px",
       md: "768px",
       lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
+      // xl: "1280px",
+      // "2xl": "1536px",
     },
   },
   plugins: [],
