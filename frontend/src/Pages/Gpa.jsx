@@ -4,12 +4,14 @@ import Container, { Head1 } from "../Components/Container/Container";
 import axios from "axios";
 
 const Gpa = () => {
+
   const [regulations, setRegulations] = useState();
   const [displayReg, setDisplayReg] = useState(true);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
-  const [degrees, setdegrees] = useState();
+  const [degrees, setDegrees] = useState();
   const [displayDeg, setDisplayDeg] = useState(true);
 
   const [departments, setDepartments] = useState();
@@ -44,15 +46,17 @@ const Gpa = () => {
 
   const getDegree = (e) => {
     setDisplayReg(false);
+
     let config = {
       method: "post",
       url: "api/degrees/",
       headers: {},
-      data: `{\r\n    "regulation_id": ${e.target.id} \r\n}`,
+      data: { "regulation_id": e.target.id },
     };
+
     axios(config)
       .then((response) => {
-        setdegrees(response.data);
+        setDegrees(response.data);
       })
       .catch((error) => {
         // console.log(error);
@@ -60,18 +64,19 @@ const Gpa = () => {
       })
       .finally(() => {
         setLoading(false);
-        // setDisplayDeg(false);
       });
   };
 
   const getDepartment = (e) => {
     setDisplayDeg(false);
+
     let config = {
       method: "post",
       url: "api/departments/",
       headers: {},
-      data: `{\r\n    "degree_id": ${e.target.id} \r\n}`,
+      data: { "degree_id": e.target.id },
     };
+
     axios(config)
       .then((response) => {
         setDepartments(response.data);
@@ -82,21 +87,22 @@ const Gpa = () => {
       })
       .finally(() => {
         setLoading(false);
-        // setDisplayDep(false);
       });
   };
 
   const getSemesters = (e) => {
     setDisplayDep(false);
+
     let config = {
       method: "post",
       url: "api/semesters/",
       headers: {},
-      data: `{\r\n    "department_id": ${e.target.id} \r\n}`,
+      data: { "department_id": e.target.id },
     };
+
     axios(config)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setSemesters(response.data);
       })
       .catch((error) => {
@@ -109,13 +115,14 @@ const Gpa = () => {
       });
   };
 
-  
+
   return (
     <Container>
       <div className=" flex-1 justify-self-center text-center">
         <Head1>GPA</Head1>
         <h4>Select Regulation</h4>
       </div>
+
       <div className=" flex-1 justify-self-center text-center">
         {loading && <h1>Loading...</h1>}
         {error && <h1>{error.message}</h1>}
@@ -133,8 +140,6 @@ const Gpa = () => {
               </button>
             );
           })}
-        {loading && <h1>Loading...</h1>}
-        {error && <h1>{error.message}</h1>}
         {degrees &&
           displayDeg &&
           degrees.map((degreeData) => {
@@ -149,8 +154,6 @@ const Gpa = () => {
               </button>
             );
           })}
-        {loading && <h1>Loading...</h1>}
-        {error && <h1>{error.message}</h1>}
         {departments &&
           displayDep &&
           departments.map((departmentData) => {
@@ -173,7 +176,7 @@ const Gpa = () => {
                 className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
                 key={semesterData.id}
                 id={semesterData.id}
-                // onClick={getSubjects}
+              // onClick={getSubjects}
               >
                 {semesterData.data}
               </button>
