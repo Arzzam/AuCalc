@@ -54,7 +54,7 @@ class Course(models.Model):
 
 
 class SemesterSubject(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.PROTECT)
     credits = models.IntegerField()
     semester = models.IntegerField()
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
