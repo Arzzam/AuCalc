@@ -37,7 +37,7 @@ const Navbar = () => {
           <NavLink to="/" onClick={collapseNav}>
             {/* <img className="h-14" src={Logo} alt="Logo" />
             <img className="h-8 -white" src={LogoFont} alt="Font" /> */}
-            <LogoFont />
+            {/* <LogoFont /> */}
           </NavLink>
         </div>
         <button
