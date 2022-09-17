@@ -1,3 +1,4 @@
+from argparse import RawTextHelpFormatter
 import pandas as pd
 from django.core.management.base import BaseCommand
 
@@ -6,7 +7,7 @@ from backend.models import *
 
 class Command(BaseCommand):
     help = """
-    Load the data from a csv files to database.
+    Loads the data from a csv files to database.
     The input files must follow the format.
     File Type: .csv
     Must have columns:
@@ -18,6 +19,11 @@ class Command(BaseCommand):
      - REGULATION : int not null
      - DEGREE : str not null
     """
+
+    def create_parser(self, prog_name: str, subcommand: str, **kwargs):
+        parser = super().create_parser(prog_name, subcommand, **kwargs)
+        parser.formatter_class = RawTextHelpFormatter
+        return parser
 
     def add_arguments(self, parser):
         parser.add_argument('files', nargs='+', type=str)
