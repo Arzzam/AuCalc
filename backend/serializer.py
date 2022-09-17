@@ -33,4 +33,4 @@ class SemesterSubjectSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SemesterSubject
-        fields = ['code', 'title', 'credits']
+        fields = ['id', 'code', 'title', 'credits']
