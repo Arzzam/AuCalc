@@ -1,7 +1,6 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchData } from "./api";
+import CalcSection from "./CalcSection";
 
 function Section(props) {
 
@@ -42,7 +41,7 @@ function Section(props) {
     }
 
     return (
-        <div>  {/* This could be also React.Fragments. */}
+        <div>  { /* This could be also React.Fragments. */ }
             <h4>Select {props.title}</h4>
             {   /* Back Button */
                 props.goBack &&
@@ -58,12 +57,19 @@ function Section(props) {
                 {error && <h1>{error.message}</h1>}
 
                 {   /* Option Buttons */
-                    !error && response &&
+                    props.storeOn && !error && response &&
                     renderButtons(response, (event) => {
                         props.updateData({
                             [props.storeOn]: event.target.id
                         })
                     })
+                }
+
+                {   /* Calc Page */
+                    !props.storeOn && !error && response &&
+                    <CalcSection
+                        response={response}
+                    />
                 }
             </div>
         </div>

@@ -1,45 +1,122 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { fetchData } from "./api";
+import { useEffect, useState, Fragment } from "react";
 
 function CalcSection(props) {
 
-    const [response, setResponse] = useState();
-    const [error, setError] = useState();
-    const [loading, setLoading] = useState(true);
+    const [subjects, setSubjects] = useState({});
+    const [result, setResult] = useState();
 
     useEffect(() => {
-        fetchData({
-            method: 'post',
-            url: 'subjects/',
-            data: {
-                department_id: props.data.department_id,
-                semester_id: props.data.semester_id
-            },
-            onSuccess: (response) => {
-                setResponse(response.data);
-            },
-            onError: (err) => {
-                setError(err);
-            },
-            onFinal: () => {
-                setLoading(false);
+
+        let data = {};
+        props.response.map((el) => {
+            data[el.id] = [el.credits, 10];
+            return el;
+        });
+
+        setSubjects(data);
+
+    }, [props.response])
+
+    const gradePoints = {
+        "O": 10,
+        "A+": 9,
+        "A": 8,
+        "B+": 7,
+        "B": 6,
+        "RA": 0,
+        "SA": 0,
+        "W": 0
+    };
+
+    function updateGrade(event) {
+        let selectedValue = event.target.selectedOptions[0].value;
+        let id = event.target.id;
+
+        setSubjects((prev) => {
+            prev[id] = [prev[id][0], gradePoints[selectedValue]]
+            return prev;
+        });
+
+        event.preventDefault();
+    }
+
+    function renderSelect(id) {
+        return (
+            <select id={id} onChange={updateGrade}>
+                {Object.keys(gradePoints).map((option, index) => {
+                    return (
+                        <option
+                            key={index}
+                            value={option}
+                        >
+                            {option}
+                        </option>
+                    );
+                })}
+            </select>
+        );
+    }
+
+    function renderFields(data) {
+        return data.map((obj) => {
+            return (
+                <div
+                    key={obj.id}
+                >
+                    <input
+                        type='text'
+                        name="code"
+                        value={obj.code}
+                        disabled
+                    />
+                    <input
+                        type='text'
+                        name="title"
+                        value={obj.title}
+                        disabled
+                    />
+                    {renderSelect(obj.id)}
+                </div>
+            );
+        });
+    }
+
+    function handleSubmit(event) {
+        
+        let earnedCredit = 0, totalCredit = 0;
+
+        for (let id in subjects) {
+            if (subjects[id][1]) {
+                earnedCredit += subjects[id][0] * subjects[id][1];
+                totalCredit += subjects[id][0];
             }
-        })
-    }, [props.data])
+        }
+
+        let result = (earnedCredit / totalCredit) || 0
+
+        setResult((result).toFixed(2));
+        event.preventDefault();
+    }
 
     return (
-        <div>
-            <h1>Calc Section</h1>
-            
-            {loading && <h1>Loading...</h1>}
-            {error && <h1>{error.message}</h1>}
-            
+        <Fragment>
+            <form
+                onSubmit={handleSubmit}
+            >
+                {renderFields(props.response)}
+                <button
+                    className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
+                    type="submit"
+                >
+                    Calculate
+                </button>
+            </form>
+
             {
-                !error && response &&
-                <p>{JSON.stringify(response)}</p>
+                result && 
+                <h1>Your GPA: {result}</h1>
             }
-        </div>
+        </Fragment>
     );
 }
 

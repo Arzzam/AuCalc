@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Container, { Head1 } from "../Components/Container/Container";
-import CalcSection from "./CalcSection";
 import Section from "./Section";
 
 const Gpa2 = () => {
@@ -79,11 +78,18 @@ const Gpa2 = () => {
                 setBack = true;
                 break;
             case 5:
-                return (
-                    <CalcSection 
-                        data={data}
-                    />
-                );
+                apiObj = {
+                    method: 'post',
+                    url: 'subjects/',
+                    payload: {
+                        department_id: data.department_id,
+                        semester_id: data.semester_id
+                    }
+                }
+
+                title = 'Calculation'
+                setBack = true;
+                break;
             default:
                 return console.log('Reached end of page switch');
         }
@@ -93,7 +99,7 @@ const Gpa2 = () => {
                 api={apiObj}
                 title={title}
                 storeOn={storeOn}
-                updateData={updateData}
+                updateData={storeOn && updateData}
                 goBack={setBack && goBack}
             />
         )
