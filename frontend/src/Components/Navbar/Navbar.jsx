@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 // import Logo from "../../assets/Logo.svg";
 // import LogoFont from "../../assets/LogoFont.svg";
 import { OpenSvg, CrossSvg } from "./NavSvg";
-import { LogoFont } from "./NavSvg";
+// import { LogoFont } from "./NavSvg";
 
 // TODO: add blur on navpane.
 // todo: theme button.
@@ -31,7 +31,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="sticky top-0 sm:px-8 px-5 py-3 w-full bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+    <nav className="sticky top-0 z-20 sm:px-8 px-5 py-3 w-full bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
       <div className="container flex-wrap lg:max-w-5xl justify-between mx-auto items-center flex">
         <div>
           <NavLink to="/" onClick={collapseNav}>
