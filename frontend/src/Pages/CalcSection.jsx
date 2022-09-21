@@ -1,4 +1,6 @@
 import { useEffect, useState, Fragment } from "react";
+import Input from "../Components/Input";
+import Select from "../Components/Select";
 
 function CalcSection(props) {
 
@@ -23,38 +25,17 @@ function CalcSection(props) {
         "A": 8,
         "B+": 7,
         "B": 6,
+        "U": 0,
         "RA": 0,
         "SA": 0,
         "W": 0
     };
 
-    function updateGrade(event) {
-        let selectedValue = event.target.selectedOptions[0].value;
-        let id = event.target.id;
-
+    function updateGrade(id, grade) {
         setSubjects((prev) => {
-            prev[id] = [prev[id][0], gradePoints[selectedValue]]
+            prev[id] = [prev[id][0], gradePoints[grade]];
             return prev;
-        });
-
-        event.preventDefault();
-    }
-
-    function renderSelect(id) {
-        return (
-            <select id={id} onChange={updateGrade}>
-                {Object.keys(gradePoints).map((option, index) => {
-                    return (
-                        <option
-                            key={index}
-                            value={option}
-                        >
-                            {option}
-                        </option>
-                    );
-                })}
-            </select>
-        );
+        })
     }
 
     function renderFields(data) {
@@ -62,27 +43,35 @@ function CalcSection(props) {
             return (
                 <div
                     key={obj.id}
+                    className='flex items-center justify-between flex-wrap w-fit mx-auto'
                 >
-                    <input
+                    <Input
                         type='text'
                         name="code"
                         value={obj.code}
                         disabled
+                        className='sm:w-20 w-1/3 sm:order-1 order-2 m-1'
                     />
-                    <input
+                    <Input
                         type='text'
                         name="title"
                         value={obj.title}
                         disabled
+                        className='w-full sm:w-96 sm:order-2 order-1 m-1'
                     />
-                    {renderSelect(obj.id)}
+                    <Select
+                        id={obj.id}
+                        updateGrade={updateGrade}
+                        options={gradePoints}
+                        className='sm:w-20 w-1/3 order-3 m-1'
+                    />
                 </div>
             );
         });
     }
 
     function handleSubmit(event) {
-        
+
         let earnedCredit = 0, totalCredit = 0;
 
         for (let id in subjects) {
@@ -113,7 +102,7 @@ function CalcSection(props) {
             </form>
 
             {
-                result && 
+                result &&
                 <h1>Your GPA: {result}</h1>
             }
         </Fragment>
