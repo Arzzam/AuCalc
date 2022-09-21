@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Progress from "../Components/Progress/Progress";
 import { fetchData } from "./api";
 import CalcSection from "./CalcSection";
 
@@ -41,7 +42,7 @@ function Section(props) {
     }
 
     return (
-        <div>  { /* This could be also React.Fragments. */ }
+        <div>  { /* This could be also React.Fragments. */}
             <h4>Select {props.title}</h4>
             {   /* Back Button */
                 props.goBack &&
@@ -53,7 +54,12 @@ function Section(props) {
                 </button>
             }
             <div>
-                {loading && <h1>Loading...</h1>}
+                { /* Loading Animation */
+                    loading &&
+                    <Progress
+                        className="h-10 w-10 text-black"
+                    />
+                }
                 {error && <h1>{error.message}</h1>}
 
                 {   /* Option Buttons */
