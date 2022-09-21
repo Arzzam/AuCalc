@@ -87,7 +87,7 @@ const Gpa2 = () => {
                     }
                 }
 
-                title = 'Calculation'
+                title = 'Grade Points'
                 setBack = true;
                 break;
             default:
