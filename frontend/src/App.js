@@ -4,7 +4,7 @@ import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import About from "./Pages/About";
 import Cgpa from "./Pages/Cgpa";
-import Gpa from "./Pages/Gpa";
+// import Gpa from "./Pages/Gpa";
 import Gpa2 from "./Pages/Gpa2";
 import Home from "./Pages/Home";
 
