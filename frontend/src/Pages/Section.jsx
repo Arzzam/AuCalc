@@ -26,6 +26,28 @@ function Section(props) {
         })
     }, [props.api]);
 
+    function clearState() {
+        /* 
+        It is important to clear current state before rendering next
+        state, to avoid current state rest still there before next state render.   
+        */
+        setLoading(true);
+        setError();
+        setResponse();
+    }
+
+    function goBack() {
+        clearState();
+        props.goBack();
+    }
+
+    function onButtonClick(event) {
+        clearState();
+        props.updateData({
+            [props.storeOn]: event.target.id
+        });
+    }
+
     function renderButtons(data, onClick) {
         return data.map((obj) => {
             return (
@@ -48,13 +70,13 @@ function Section(props) {
                 props.goBack &&
                 <button
                     className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
-                    onClick={props.goBack}
+                    onClick={goBack}
                 >
                     Back
                 </button>
             }
             <div>
-                { /* Loading Animation */
+                {   /* Loading Animation */
                     loading &&
                     <Progress
                         className="h-10 w-10 text-black"
@@ -64,11 +86,7 @@ function Section(props) {
 
                 {   /* Option Buttons */
                     props.storeOn && !error && response &&
-                    renderButtons(response, (event) => {
-                        props.updateData({
-                            [props.storeOn]: event.target.id
-                        })
-                    })
+                    renderButtons(response, onButtonClick)
                 }
 
                 {   /* Calc Page */
