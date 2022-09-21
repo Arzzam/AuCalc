@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Progress from "../Components/Progress/Progress";
 import { fetchData } from "./api";
 import CalcSection from "./CalcSection";
+import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 
 function Section(props) {
 
@@ -65,16 +66,22 @@ function Section(props) {
 
     return (
         <div>  { /* This could be also React.Fragments. */}
-            <h4>Select {props.title}</h4>
             {   /* Back Button */
                 props.goBack &&
                 <button
-                    className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
+                    className="absolute left-4 top-4 p-2 rounded-full bg-black text-white"
                     onClick={goBack}
                 >
-                    Back
+                    <ArrowLeftIcon
+                        className="h-6 w-6"
+                    />
                 </button>
             }
+            <h1
+                className="text-xl mx-auto m-1"
+            >
+                Select {props.title}
+            </h1>
             <div>
                 {   /* Loading Animation */
                     loading &&

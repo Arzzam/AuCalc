@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Container, { Head1 } from "../Components/Container/Container";
+import SectionPane from "../Components/SectionPane";
 import Section from "./Section";
 
 const Gpa2 = () => {
@@ -109,7 +110,9 @@ const Gpa2 = () => {
         <Container>
             <div className=" flex-1 justify-self-center text-center">
                 <Head1>GPA</Head1>
-                {conditionalRender()}
+                <SectionPane>
+                    {conditionalRender()}
+                </SectionPane>
             </div>
         </Container>
     );
