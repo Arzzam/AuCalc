@@ -10,6 +10,7 @@ module.exports = {
         secondary: "#00f6ff",
         dimWhite: "rgba(255, 255, 255, 0.7)",
         dimBlue: "rgba(9, 151, 124, 0.1)",
+        // primarygrad: "rgb(17,12,92) linear-gradient(90deg, rgba(17,12,92,1) 0%, rgba(10,10,75,1) 89%, rgba(20,26,106,1) 100%);"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

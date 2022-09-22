@@ -14,10 +14,10 @@ const Home = () => {
       <div className=" flex-1 justify-self-center text-center">
         <Head1>AuCalc</Head1>
         <h2 className="font-lora p-2 font-normal text-xl">GPA and CGPA Calculator</h2>
-        <p className="justify-center p-2 font-rki text-lg">
+        <p className="justify-center p-2 font-poppins text-base font-normal">
           AuCalc is used to calculate Grade Point Average (GPA) and Cumulative
           Grade Point Average (CGPA) scores
-          <br /> 
+          <br />
           for students studying at all colleges under Anna university.
           <br />
           Aucalc, an online platform, is an efficient and versatile tool to
