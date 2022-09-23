@@ -22,7 +22,9 @@ const StyledLd = styled(LinkedInIcon)`
 const Contributors = (props) => {
   return (
     <div>
-      <h2>{props.name}</h2>
+      <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase">
+        {props.name}
+      </h2>
       <Link href={props.ldLink}>
         <StyledLd />
       </Link>
