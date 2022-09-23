@@ -106,7 +106,7 @@ const Gpa2 = () => {
 
     return (
         <Container>
-            <div className="flex-1 text-center  justify-self-center">
+            <div className="text-center">
                 <Head1>GPA</Head1>
                 <SectionPane>{conditionalRender()}</SectionPane>
             </div>
