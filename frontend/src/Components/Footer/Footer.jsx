@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "../Container/Container";
 import Logo from "../Logo/Logo";
+import LogoFont from "../Logo/LogoFont";
 import Contributors from "./Contributors";
 
 // TODO Looking
@@ -23,7 +24,10 @@ const Footer = () => {
         <footer className="relative bottom-0 w-full px-5 py-3 sm:p-6 ">
             <Container>
                 <div className="flex flex-row justify-around">
-                    <Logo className="h-14"/>
+                    <div className="flex flex-col items-center justify-center">
+                        <Logo className="h-14" />
+                        <LogoFont className="h-4" />
+                    </div>
                     <Contributors
                         name="Nanthakumar"
                         ldLink={linkdNantha}
