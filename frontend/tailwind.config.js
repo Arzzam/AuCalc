@@ -53,6 +53,7 @@ module.exports = {
             tighter: '-.05em',
             tight: '-.025em',
             normal: '0',
+            n1: '0.01em',
             wide: '.025em',
             wider: '.05em',
             widest: '.07em',
