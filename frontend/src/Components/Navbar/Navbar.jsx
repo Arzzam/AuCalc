@@ -55,7 +55,7 @@ const Navbar = () => {
             <NavbarLink to="/" child="Home" onClick={collapseNav} />
             <NavbarLink to="/gpa" child="GPA" onClick={collapseNav} />
             <NavbarLink to="/cgpa" child="CGPA" onClick={collapseNav} />
-            <NavbarLink to="/about" child="About" onClick={collapseNav} />
+            {/* <NavbarLink to="/about" child="About" onClick={collapseNav} /> */}
           </ul>
         </div>
       </div>
