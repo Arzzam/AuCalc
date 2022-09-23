@@ -17,6 +17,7 @@ module.exports = {
                 lora: ["Lora", "sans-serif"],
                 dansc: ["Dancing Script", "cursive"],
                 rki: ["Reem Kufi Ink", "sans-serif"],
+                logo: ["logofont", "sans-serif"]
             },
             animation: {
                 "spin-slow": "spin 2s linear infinite", // For Loading animation.
@@ -47,6 +48,16 @@ module.exports = {
             // xl: "1280px",
             // "2xl": "1536px",
         },
+        letterSpacing: {
+            tightest: '-.075em',
+            tighter: '-.05em',
+            tight: '-.025em',
+            normal: '0',
+            wide: '.025em',
+            wider: '.05em',
+            widest: '.07em',
+            widests: '.1em',
+        }
     },
     plugins: [],
 };

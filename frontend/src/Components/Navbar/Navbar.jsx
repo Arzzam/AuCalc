@@ -37,7 +37,7 @@ const Navbar = () => {
                         {/* <img className="h-14" src={Logo} alt="Logo" />
             <img className="h-8 -white" src={LogoFont} alt="Font" /> */}
                         {/* <LogoFont /> */}
-                        <Logo />
+                        <Logo className= "h-10"/>
                     </NavLink>
                 </div>
                 <button
