@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { OpenSvg, CrossSvg } from "./NavSvg";
-import Logo from "./Logo";
+import Logo from "../Logo/Logo";
+import LogoFont from "../Logo/LogoFont";
 
 
 // TODO: add blur on navpane.
@@ -34,10 +35,9 @@ const Navbar = () => {
             <div className="container flex flex-wrap items-center justify-between mx-auto lg:max-w-5xl">
                 <div>
                     <NavLink to="/" onClick={collapseNav}>
-                        {/* <img className="h-14" src={Logo} alt="Logo" />
-            <img className="h-8 -white" src={LogoFont} alt="Font" /> */}
+                        <Logo className="h-10" />
                         {/* <LogoFont /> */}
-                        <Logo className= "h-10"/>
+                        <span className="font-logo ">aucalc</span>
                     </NavLink>
                 </div>
                 <button

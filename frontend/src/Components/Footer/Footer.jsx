@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "../Container/Container";
-import Logo from "../Navbar/Logo";
+import Logo from "../Logo/Logo";
 import Contributors from "./Contributors";
 
 // TODO Looking
