@@ -1,37 +1,37 @@
 export const CrossSvg = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-    >
-      <path
-        fillRule="evenodd"
-        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-7 h-7"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+        >
+            <path
+                fillRule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clipRule="evenodd"
+            />
+        </svg>
+    );
 };
 
 export const OpenSvg = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2}
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M4 6h16M4 12h16M4 18h16"
-      />
-    </svg>
-  );
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-7 h-7"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+            />
+        </svg>
+    );
 };
 
 // export const Logo = () => {
@@ -43,26 +43,26 @@ export const OpenSvg = () => {
 // }
 
 export const LogoFont = () => {
-  return (
-    <div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 413.51 128.45">
-        <g id="Layer_2" data-name="Layer 2">
-          <g id="Layer_1-2" data-name="Layer 1">
-            <text class="cls-1" transform="translate(0 77.99)">
-              a
-              <tspan class="cls-2" x="73.12" y="0">
-                uca
-              </tspan>
-              <tspan class="cls-3" x="289.83" y="0">
-                l
-              </tspan>
-              <tspan class="cls-2" x="342.77" y="0">
-                c
-              </tspan>
-            </text>
-          </g>
-        </g>
-      </svg>
-    </div>
-  );
+    return (
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 413.51 128.45">
+                <g id="Layer_2" data-name="Layer 2">
+                    <g id="Layer_1-2" data-name="Layer 1">
+                        <text class="cls-1" transform="translate(0 77.99)">
+                            a
+                            <tspan class="cls-2" x="73.12" y="0">
+                                uca
+                            </tspan>
+                            <tspan class="cls-3" x="289.83" y="0">
+                                l
+                            </tspan>
+                            <tspan class="cls-2" x="342.77" y="0">
+                                c
+                            </tspan>
+                        </text>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    );
 };

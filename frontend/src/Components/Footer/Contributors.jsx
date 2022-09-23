@@ -20,19 +20,19 @@ const StyledLd = styled(LinkedInIcon)`
 `;
 
 const Contributors = (props) => {
-  return (
-    <div>
-      <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase">
-        {props.name}
-      </h2>
-      <Link href={props.ldLink}>
-        <StyledLd />
-      </Link>
-      <Link href={props.gitLink}>
-        <StyledGit />
-      </Link>
-    </div>
-  );
+    return (
+        <div>
+            <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase">
+                {props.name}
+            </h2>
+            <Link href={props.ldLink}>
+                <StyledLd />
+            </Link>
+            <Link href={props.gitLink}>
+                <StyledGit />
+            </Link>
+        </div>
+    );
 };
 
 export default Contributors;
