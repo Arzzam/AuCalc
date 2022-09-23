@@ -35,9 +35,10 @@ const Navbar = () => {
             <div className="container flex flex-wrap items-center justify-between mx-auto lg:max-w-5xl">
                 <div>
                     <NavLink to="/" onClick={collapseNav}>
-                        <Logo className="h-10" />
-                        {/* <LogoFont /> */}
-                        <span className="font-logo ">aucalc</span>
+                        <ul className="flex flex-row py-2">
+                            <Logo className="h-10" />
+                            <LogoFont class="pt-1 pl-1" />
+                        </ul>
                     </NavLink>
                 </div>
                 <button
