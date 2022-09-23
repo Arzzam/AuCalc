@@ -53,7 +53,7 @@ function Section(props) {
         return data.map((obj) => {
             return (
                 <button
-                    className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
+                    className="block w-full p-2 my-2 mx-auto font-medium rounded-md bg-black text-white"
                     key={obj.id}
                     id={obj.id}
                     onClick={onClick}
@@ -65,7 +65,7 @@ function Section(props) {
     }
 
     return (
-        <div>  { /* This could be also React.Fragments. */}
+        <>  { /* This could be also React.Fragments. */}
             {   /* Back Button */
                 props.goBack &&
                 <button
@@ -78,24 +78,45 @@ function Section(props) {
                 </button>
             }
             <h1
-                className="text-xl mx-auto m-1"
+                className="text-xl mx-auto m-1.5"
             >
                 Select {props.title}
             </h1>
-            <div>
+            <div
+                className="mt-5 overflow-y-auto"
+            >
                 {   /* Loading Animation */
                     loading &&
-                    <Progress
-                        className="h-10 w-10 text-black"
-                    />
+                    <div
+                        className="h-[20rem] flex items-center justify-center"
+                    >
+                        <Progress
+                            className="h-10 w-10 text-black"
+                        />
+                    </div>
                 }
-                {error && <h1>{error.message}</h1>}
+
+                {   /* Error Message */
+                    error &&
+                    <div
+                        className="h-[20rem] flex items-center justify-center"
+                    >
+                        <h1>
+                            Caught some error.
+                            <br />
+                            Please try again...
+                        </h1>
+                    </div>
+                }
 
                 {   /* Option Buttons */
                     props.storeOn && !error && response &&
-                    renderButtons(response, onButtonClick)
+                    <div
+                        className="h-[20rem]"
+                    >
+                        {renderButtons(response, onButtonClick)}
+                    </div>
                 }
-
                 {   /* Calc Page */
                     !props.storeOn && !error && response &&
                     <CalcSection
@@ -103,7 +124,7 @@ function Section(props) {
                     />
                 }
             </div>
-        </div>
+        </>
     );
 }
 
