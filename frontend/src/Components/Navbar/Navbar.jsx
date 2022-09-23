@@ -4,7 +4,6 @@ import { OpenSvg, CrossSvg } from "./NavSvg";
 import Logo from "../Logo/Logo";
 import LogoFont from "../Logo/LogoFont";
 
-
 // TODO: add blur on navpane.
 // todo: theme button.
 // todo: add toggle animation.
@@ -33,16 +32,16 @@ const Navbar = () => {
     return (
         <nav className="sticky top-0 z-20 w-full px-5 py-3 bg-white border-gray-200 sm:px-8 dark:bg-gray-900 dark:border-gray-700">
             <div className="container flex flex-wrap items-center justify-between mx-auto lg:max-w-5xl">
-                <div>
-                    <NavLink to="/" onClick={collapseNav}>
-                        <ul className="flex flex-row items-center justify-center py-2">
-                            <Logo className="h-10" />
-                            <LogoFont className="h-6 pt-1 pl-1" />
-                        </ul>
-                    </NavLink>
-                </div>
+                <NavLink
+                    className="sm:mx-3 mx-2 my-2 flex flex-row items-center justify-center"
+                    to="/"
+                    onClick={collapseNav}
+                >
+                    <Logo className="h-9 dark:text-white" />
+                    <LogoFont className="h-4 ml-2 dark:text-white" />
+                </NavLink>
                 <button
-                    className="m-2 text-gray-700 rounded-sm sm:hidden dark:text-gray-400 dark:hover:text-white"
+                    className="p-1 mx-2 border border-solid border-gray-600 text-gray-700 rounded-sm sm:hidden dark:text-gray-400 dark:hover:text-white"
                     onClick={() => setNavbar(!navbar)}
                 >
                     {navbar ? <CrossSvg /> : <OpenSvg />}
