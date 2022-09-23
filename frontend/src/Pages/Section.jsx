@@ -88,7 +88,7 @@ function Section(props) {
                 {   /* Loading Animation */
                     loading &&
                     <div
-                        className="h-[20rem] flex items-center justify-center"
+                        className="h-[20.5rem] flex items-center justify-center"
                     >
                         <Progress
                             className="h-10 w-10 text-black"
@@ -99,7 +99,7 @@ function Section(props) {
                 {   /* Error Message */
                     error &&
                     <div
-                        className="h-[20rem] flex items-center justify-center"
+                        className="h-[20.5rem] flex items-center justify-center"
                     >
                         <h1>
                             Caught some error.
