@@ -10,18 +10,18 @@ import Footer from "./Components/Footer/Footer";
 // import Gpa from "./Pages/Gpa";
 
 const App = () => {
-  return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/gpa" element={<Gpa2 />} />
-        <Route exact path="/cgpa" element={<Cgpa />} />
-        {/* <Route exact path="/about" element={<About />} /> */}
-      </Routes>
-      <Footer />
-    </Router>
-  );
+    return (
+        <Router>
+            <Navbar />
+            <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/gpa" element={<Gpa2 />} />
+                <Route exact path="/cgpa" element={<Cgpa />} />
+                {/* <Route exact path="/about" element={<About />} /> */}
+            </Routes>
+            <Footer />
+        </Router>
+    );
 };
 
 export default App;
