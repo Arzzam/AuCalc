@@ -13,6 +13,9 @@ const App = () => {
     return (
         <Router>
             <Navbar />
+            <div 
+                className="min-h-[15vh]"
+            />
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="/gpa" element={<Gpa2 />} />
