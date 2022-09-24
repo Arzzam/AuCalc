@@ -1,10 +1,10 @@
 import React from "react";
-import Container, { Head1 } from "../Components/Container/Container";
+import Container, { H1 } from "../Components/Container/Container";
 
 const Cgpa = () => {
     return (
         <Container>
-            <Head1>CGPA</Head1>
+            <H1>CGPA</H1>
         </Container>
     );
 };

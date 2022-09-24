@@ -3,24 +3,12 @@ import { NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import LogoFont from "../Logo/LogoFont";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid"
+import NavbarLink from "./Navlink";
 
 // TODO: add blur on navpane.
 // todo: theme button.
 // todo: add toggle animation.
 
-function NavbarLink(props) {
-    return (
-        <li className="mx-3">
-            <NavLink
-                to={props.to}
-                onClick={props.onClick}
-                className="block py-2 my-0 rounded sm:p-0 sm:hover:text-blue-700 dark:text-gray-400 sm:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white sm:hover:bg-transparent"
-            >
-                {props.child}
-            </NavLink>
-        </li>
-    );
-}
 
 const Navbar = () => {
     const [navExpand, setNavExpand] = useState(false);
