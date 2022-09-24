@@ -3,6 +3,7 @@ import Progress from "../Components/Progress/Progress";
 import { fetchData } from "./api";
 import CalcSection from "./CalcSection";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
+import RefreshIcon from "../Components/RefreshIcon";
 
 function Section(props) {
 
@@ -10,7 +11,7 @@ function Section(props) {
     const [error, setError] = useState();
     const [response, setResponse] = useState();
 
-    useEffect(() => {
+    function loadData() {
         fetchData({
             method: props.api.method,
             url: props.api.url,
@@ -25,7 +26,9 @@ function Section(props) {
                 setLoading(false);
             }
         })
-    }, [props.api]);
+    }
+
+    useEffect(loadData, [props.api]);
 
     function clearState() {
         /* 
@@ -35,6 +38,11 @@ function Section(props) {
         setLoading(true);
         setError();
         setResponse();
+    }
+
+    function reloadState() {
+        clearState();
+        loadData();
     }
 
     function goBack() {
@@ -73,22 +81,22 @@ function Section(props) {
                     onClick={goBack}
                 >
                     <ArrowLeftIcon
-                        className="h-6 w-6"
+                        className="h-5 w-5"
                     />
                 </button>
             }
             <h1
-                className="text-xl mx-auto m-1.5"
+                className="text-lg text-center m-1"
             >
                 Select {props.title}
             </h1>
             <div
-                className="mt-5 overflow-y-auto"
+                className="mt-5 overflow-hidden rounded-lg"
             >
                 {   /* Loading Animation */
                     loading &&
                     <div
-                        className="h-[20.5rem] flex items-center justify-center"
+                        className="h-[20rem] flex items-center justify-center"
                     >
                         <Progress
                             className="h-10 w-10 text-black"
@@ -96,27 +104,37 @@ function Section(props) {
                     </div>
                 }
 
-                {   /* Error Message */
+                {   /* Error and Refresh */
                     error &&
                     <div
-                        className="h-[20.5rem] flex items-center justify-center"
+                        className="h-[20rem] flex flex-col items-center justify-center"
                     >
                         <h1>
-                            Caught some error.
-                            <br />
-                            Please try again...
+                            Oops, Try again...
                         </h1>
+                        <button
+                            className="block my-2 border border-black border-solid rounded-full p-1"
+                            onClick={reloadState}
+                        >
+                            <RefreshIcon
+                                className="h-7"
+                            />
+                        </button>
                     </div>
                 }
 
                 {   /* Option Buttons */
                     props.storeOn && !error && response &&
                     <div
-                        className="h-[20rem]"
+                        className="h-[20rem] overflow-y-auto"
                     >
                         {renderButtons(response, onButtonClick)}
                     </div>
                 }
+            </div>
+            <div
+                className="mt-5"
+            >
                 {   /* Calc Page */
                     !props.storeOn && !error && response &&
                     <CalcSection
