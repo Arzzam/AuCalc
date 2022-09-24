@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Container, { Head1 } from "../Components/Container/Container";
+import Container from "../Components/Container/Container";
 import SectionPane from "../Components/SectionPane";
 import Section from "./Section";
 
@@ -106,9 +106,7 @@ const Gpa2 = () => {
 
     return (
         <Container>
-            <h1
-                className="text-center text-xl my-2"
-            >
+            <h1 className="text-center text-xl my-2">
                 GPA
             </h1>
             <SectionPane>{conditionalRender()}</SectionPane>

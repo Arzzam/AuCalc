@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Pages/Home";
@@ -11,11 +11,8 @@ import Footer from "./Components/Footer/Footer";
 
 const App = () => {
     return (
-        <Router>
+        <div>
             <Navbar />
-            <div 
-                className="min-h-[15vh]"
-            />
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="/gpa" element={<Gpa2 />} />
@@ -23,7 +20,7 @@ const App = () => {
                 {/* <Route exact path="/about" element={<About />} /> */}
             </Routes>
             <Footer />
-        </Router>
+        </div>
     );
 };
 

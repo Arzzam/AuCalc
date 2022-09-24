@@ -3,24 +3,13 @@ import { NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import LogoFont from "../Logo/LogoFont";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid"
+import NavbarLink from "./Navlink";
+// import NavOpen from "./NavOpen";
 
-// TODO: add blur on navpane.
+// TODO: add blur on navpane.   68px
 // todo: theme button.
 // todo: add toggle animation.
 
-function NavbarLink(props) {
-    return (
-        <li className="mx-3">
-            <NavLink
-                to={props.to}
-                onClick={props.onClick}
-                className="block py-2 my-0 rounded sm:p-0 sm:hover:text-blue-700 dark:text-gray-400 sm:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white sm:hover:bg-transparent"
-            >
-                {props.child}
-            </NavLink>
-        </li>
-    );
-}
 
 const Navbar = () => {
     const [navExpand, setNavExpand] = useState(false);
@@ -31,7 +20,7 @@ const Navbar = () => {
 
     return (
         <div
-            className="relative h-px"
+        // className="relative h-px"
         >
             <nav className="sticky top-0 z-20 w-full px-5 sm:py-3 py-2 bg-white border-gray-200 sm:px-8 dark:bg-gray-900 dark:border-gray-700">
                 <div className="container flex flex-wrap items-center justify-between mx-auto lg:max-w-5xl">
@@ -58,6 +47,7 @@ const Navbar = () => {
                                 />
                         }
                     </button>
+                    {/* <NavOpen onClick={collapseNav} navExpand={navExpand} /> */}
                     <div
                         className={`sm:flex sm:my-0 my-2 sm:mt-0 sm:basis-auto basis-full item-center${navExpand ? "" : " hidden"}`}
                     >

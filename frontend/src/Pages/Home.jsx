@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Container, { Head1 } from "../Components/Container/Container";
+import Container, { H1 } from "../Components/Container/Container";
 import SectionPane from "../Components/SectionPane";
 // import { HomeButton } from "../Components/Button/Button";
 
@@ -13,7 +13,8 @@ const Home = () => {
     return (
         <Container>
             <div className="flex-1 text-center justify-self-center">
-                <Head1>AuCalc</Head1>
+                <H1>AuCalc
+                </H1>
                 {/* <h2 className="p-2 text-xl font-normal font-lora">
           GPA and CGPA Calculator
         </h2> */}

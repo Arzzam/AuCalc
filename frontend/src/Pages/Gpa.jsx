@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import { GpaButton } from "../Components/Button/Button";
-import Container, { Head1 } from "../Components/Container/Container";
+import Container, { H1 } from "../Components/Container/Container";
 import axios from "axios";
 
 const Gpa = () => {
@@ -119,7 +119,8 @@ const Gpa = () => {
     return (
         <Container>
             <div className=" flex-1 justify-self-center text-center">
-                <Head1>GPA</Head1>
+                <H1>GPA
+                </H1>
                 <h4>Select Regulation</h4>
             </div>
 
