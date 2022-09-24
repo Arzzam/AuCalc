@@ -1,6 +1,10 @@
 const Container = (props) => {
     return (
-        <div className="lg:container mx-auto px-6 py-6 ">{props.children}</div>
+        <div
+            className="container mx-auto"
+        >
+            {props.children}
+        </div>
     );
 };
 
