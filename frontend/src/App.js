@@ -12,19 +12,14 @@ import Footer from "./Components/Footer/Footer";
 const App = () => {
     return (
         <div>
-            {/* <Router > */}
             <Navbar />
-                <div
-                    className="min-h-[15vh]"
-                />
-                <Routes>
-                    <Route exact path="/" element={<Home />} />
-                    <Route exact path="/gpa" element={<Gpa2 />} />
-                    <Route exact path="/cgpa" element={<Cgpa />} />
-                    {/* <Route exact path="/about" element={<About />} /> */}
-                </Routes>
-                <Footer />
-            {/* </Router> */}
+            <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/gpa" element={<Gpa2 />} />
+                <Route exact path="/cgpa" element={<Cgpa />} />
+                {/* <Route exact path="/about" element={<About />} /> */}
+            </Routes>
+            <Footer />
         </div>
     );
 };

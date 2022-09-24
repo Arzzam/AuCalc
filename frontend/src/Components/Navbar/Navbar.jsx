@@ -6,7 +6,7 @@ import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid"
 import NavbarLink from "./Navlink";
 // import NavOpen from "./NavOpen";
 
-// TODO: add blur on navpane.
+// TODO: add blur on navpane.   68px
 // todo: theme button.
 // todo: add toggle animation.
 
@@ -20,7 +20,7 @@ const Navbar = () => {
 
     return (
         <div
-            className="relative h-px"
+            // className="relative h-px"
         >
             <nav className="sticky top-0 z-20 w-full px-5 sm:py-3 py-2 bg-white border-gray-200 sm:px-8 dark:bg-gray-900 dark:border-gray-700">
                 <div className="container flex flex-wrap items-center justify-between mx-auto lg:max-w-5xl">
