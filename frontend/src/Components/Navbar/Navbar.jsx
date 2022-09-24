@@ -4,6 +4,7 @@ import Logo from "../Logo/Logo";
 import LogoFont from "../Logo/LogoFont";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid"
 import NavbarLink from "./Navlink";
+// import NavOpen from "./NavOpen";
 
 // TODO: add blur on navpane.
 // todo: theme button.
