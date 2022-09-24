@@ -106,10 +106,12 @@ const Gpa2 = () => {
 
     return (
         <Container>
-            <div className="text-center">
-                <Head1>GPA</Head1>
-                <SectionPane>{conditionalRender()}</SectionPane>
-            </div>
+            <h1
+                className="text-center text-xl my-2"
+            >
+                GPA
+            </h1>
+            <SectionPane>{conditionalRender()}</SectionPane>
         </Container>
     );
 };
