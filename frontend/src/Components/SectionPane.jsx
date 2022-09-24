@@ -2,7 +2,7 @@
 
 export default function SectionPane(props) {
     return (
-        <div className={`relative sm:w-fit sm:min-w-[25rem] transition-w ease-linear duration-300 mx-auto p-4 bg-gray-400/20 rounded-[1rem] shadow-lg${props.className ? ' ' + props.className: '' }`}>
+        <div className={`relative xs:w-fit xs:min-w-[24rem] mx-auto p-4 bg-gray-400/20 rounded-[1rem] text-center shadow-lg${props.className ? ' ' + props.className: '' }`}>
             {props.children}
         </div>
     );
