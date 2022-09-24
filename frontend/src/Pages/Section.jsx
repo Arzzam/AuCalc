@@ -61,7 +61,7 @@ function Section(props) {
         return data.map((obj) => {
             return (
                 <button
-                    className="block w-full p-2 my-2 mx-auto font-medium rounded-md bg-black text-white"
+                    className="block w-full p-2 my-2 mx-auto text-sm rounded-md bg-black text-white"
                     key={obj.id}
                     id={obj.id}
                     onClick={onClick}
