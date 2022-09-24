@@ -25,7 +25,7 @@ function Select(props) {
     }, [props.options, selectedOption]);
 
     function handleClick(event) {
-        setIsMenuOpen(true);
+        setIsMenuOpen(!isMenuOpen);
         event.preventDefault();
     }
 
