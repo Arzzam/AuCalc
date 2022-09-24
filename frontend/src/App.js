@@ -13,7 +13,7 @@ const App = () => {
     return (
         <Router>
             <Navbar />
-            <div 
+            <div
                 className="min-h-[15vh]"
             />
             <Routes>
