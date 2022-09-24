@@ -1,7 +1,7 @@
 const Container = (props) => {
     return (
         <div
-            className="container mx-auto"
+            className="container mx-auto p-10 pb-24"
         >
             {props.children}
         </div>
