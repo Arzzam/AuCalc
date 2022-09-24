@@ -9,7 +9,7 @@ import NavbarLink from './Navlink';
 
 const NavOpen = (props) => {
     return (
-        <div className={`fixed top-4 right-4 w-full max-w-screen-xs bg-gray-900 rounded-lg shadow-lg p-6 ${props.navExpand ? "" : " hidden"}`}>
+        <div className={`fixed top-6 right-4 w-full max-w-screen-xs bg-gray-900 rounded-lg shadow-lg p-6 ${props.navExpand ? "" : " hidden"}`}>
             <ul className="space-y-5">
                 <li>
                     <NavbarLink to="/" child="Home" onClick={props.collapseNav} />

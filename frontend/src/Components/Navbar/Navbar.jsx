@@ -20,7 +20,7 @@ const Navbar = () => {
 
     return (
         <div
-            // className="relative h-px"
+        // className="relative h-px"
         >
             <nav className="sticky top-0 z-20 w-full px-5 sm:py-3 py-2 bg-white border-gray-200 sm:px-8 dark:bg-gray-900 dark:border-gray-700">
                 <div className="container flex flex-wrap items-center justify-between mx-auto lg:max-w-5xl">
@@ -47,6 +47,7 @@ const Navbar = () => {
                                 />
                         }
                     </button>
+                    {/* <NavOpen onClick={collapseNav} navExpand={navExpand} /> */}
                     <div
                         className={`sm:flex sm:my-0 my-2 sm:mt-0 sm:basis-auto basis-full item-center${navExpand ? "" : " hidden"}`}
                     >
