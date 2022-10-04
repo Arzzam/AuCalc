@@ -132,16 +132,17 @@ function Section(props) {
                     </div>
                 }
             </div>
-            <div
-                className="mt-5"
-            >
-                {   /* Calc Page */
-                    !props.storeOn && !error && response &&
+            {   /* Calc Page */
+                !props.storeOn && !error && response &&
+                <div
+                    className="mt-5"
+                >
                     <CalcSection
                         response={response}
                     />
-                }
-            </div>
+
+                </div>
+            }
         </>
     );
 }
