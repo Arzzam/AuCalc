@@ -1,6 +1,7 @@
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
+from django.db.models import Sum
 
 from backend.serializer import *
 
@@ -67,4 +68,19 @@ def semester_subject_list(request):
             return HttpResponse(status=404)
 
         serializer = SemesterSubjectSerializer(semester_subs, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+
+@csrf_exempt
+def semester_credit_list(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        semester_credits = SemesterSubject.objects \
+            .filter(department=data['department_id']) \
+            .values('semester') \
+            .annotate(credits=Sum('credits'))
+        if not semester_credits:
+            return HttpResponse(status=404)
+
+        serializer = SemesterCreditSerializer(semester_credits, many=True)
         return JsonResponse(serializer.data, safe=False)
