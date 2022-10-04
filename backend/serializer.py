@@ -34,3 +34,11 @@ class SemesterSubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = SemesterSubject
         fields = ['id', 'code', 'title', 'credits']
+
+
+class SemesterCreditSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source='semester')
+
+    class Meta:
+        model = SemesterSubject
+        fields = ['id', 'semester', 'credits']
