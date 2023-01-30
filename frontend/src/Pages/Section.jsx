@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Progress from "../Components/Progress/Progress";
 import { fetchData } from "./api";
-import CalcSection from "./CalcSection";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import RefreshIcon from "../Components/RefreshIcon";
 
@@ -88,7 +87,7 @@ function Section(props) {
             <h1
                 className="text-lg text-center m-1"
             >
-                Select {props.title}
+                {props.title}
             </h1>
             <div
                 className="mt-5 overflow-hidden rounded-lg"
@@ -99,7 +98,7 @@ function Section(props) {
                         className="h-[20rem] flex items-center justify-center"
                     >
                         <Progress
-                            className="h-10 w-10 text-black"
+                            className="h-10 text-black"
                         />
                     </div>
                 }
@@ -134,13 +133,10 @@ function Section(props) {
             </div>
             {   /* Calc Page */
                 !props.storeOn && !error && response &&
-                <div
-                    className="mt-5"
-                >
-                    <CalcSection
+                <div>
+                    <props.finalPage
                         response={response}
                     />
-
                 </div>
             }
         </>

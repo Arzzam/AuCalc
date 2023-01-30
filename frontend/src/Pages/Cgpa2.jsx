@@ -3,7 +3,11 @@ import Container from "../Components/Container/Container";
 import SectionPane from "../Components/SectionPane";
 import Section from "./Section";
 
-const Gpa2 = () => {
+
+// Todo: put arrear can't use directly notice.
+// start process on /credits.
+
+export default function Cgpa2(props) {
     const [page, setPage] = useState(1);
 
     const [data, setData] = useState({
@@ -12,6 +16,8 @@ const Gpa2 = () => {
         department_id: null,
         semester_id: null,
     });
+
+    const [credits, setCredits] = useState()
 
     function updateData(obj) {
         setData({ ...data, ...obj });
@@ -65,30 +71,31 @@ const Gpa2 = () => {
                 setBack = true;
                 break;
             case 4:
-                apiObj = {
-                    method: "post",
-                    url: "semesters/",
-                    payload: {
-                        department_id: data.department_id,
-                    },
-                };
-                title = "Semester";
-                storeOn = "semester_id";
-                setBack = true;
+                
+                // apiObj = {
+                //     method: "post",
+                //     url: "semesters/",
+                //     payload: {
+                //         department_id: data.department_id,
+                //     },
+                // };
+                // title = "Semester";
+                // storeOn = "semester_id";
+                // setBack = true;
                 break;
-            case 5:
-                apiObj = {
-                    method: "post",
-                    url: "subjects/",
-                    payload: {
-                        department_id: data.department_id,
-                        semester_id: data.semester_id,
-                    },
-                };
+            // case 5:
+            //     apiObj = {
+            //         method: "post",
+            //         url: "subjects/",
+            //         payload: {
+            //             department_id: data.department_id,
+            //             semester_id: data.semester_id,
+            //         },
+            //     };
 
-                title = "Grade Points";
-                setBack = true;
-                break;
+            //     title = "Grade Points";
+            //     setBack = true;
+            //     break;
             default:
                 return console.log("Reached end of page switch");
         }
@@ -107,11 +114,16 @@ const Gpa2 = () => {
     return (
         <Container>
             <h1 className="text-center text-xl my-2">
-                GPA
+                CGPA
             </h1>
-            <SectionPane>{conditionalRender()}</SectionPane>
+            <SectionPane>
+                { // Works when credit data is empty.
+                    !credits && conditionalRender()
+                }
+                { 
+                    <h1>Working</h1>
+                }
+            </SectionPane>
         </Container>
     );
-};
-
-export default Gpa2;
+}

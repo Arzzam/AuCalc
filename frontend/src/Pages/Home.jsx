@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Container, { H1 } from "../Components/Container/Container";
+import BodyContainer from "../Components/Container/BodyContainer";
 import SectionPane from "../Components/SectionPane";
 // import { HomeButton } from "../Components/Button/Button";
 
@@ -11,31 +11,24 @@ const Home = () => {
     };
 
     return (
-        <Container>
-            <div className="flex-1 text-center justify-self-center">
-                <H1>AuCalc
-                </H1>
-                {/* <h2 className="p-2 text-xl font-normal font-lora">
-          GPA and CGPA Calculator
-        </h2> */}
-            </div>
+        <BodyContainer>
             <SectionPane className="text-center">
                 <button
-                    className="h-10 px-3 m-4 font-medium text-white bg-black rounded-md"
+                    className="h-10 px-3 m-4 text-white bg-black rounded-md"
                     id="gpa"
                     onClick={switchHandler}
                 >
                     GPA
                 </button>
-                <button
-                    className="h-10 px-3 m-4 font-medium text-white bg-black rounded-md"
+                {/* <button
+                    className="h-10 px-3 m-4 text-white bg-black rounded-md"
                     id="cgpa"
                     onClick={switchHandler}
                 >
                     CGPA
-                </button>
+                </button> */}
             </SectionPane>
-        </Container>
+        </BodyContainer>
     );
 };
 

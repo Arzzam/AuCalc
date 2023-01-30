@@ -4,6 +4,9 @@ module.exports = {
     content: ["./index.html", "./src/**/*.{js,jsx}"],
     mode: "jit",
     theme: {
+        container: {
+            padding: '0.2rem'
+        },
         extend: {
             colors: {
                 primary: "#00040f",
@@ -45,7 +48,7 @@ module.exports = {
             xs: "425px",
             sm: "640px",
             md: "768px",
-            lg: "1024px",
+            // lg: "1024px",
             // xl: "1280px",
             // "2xl": "1536px",
         },

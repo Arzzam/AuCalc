@@ -60,7 +60,7 @@ function CalcSection(props) {
                         id={obj.id}
                         updateGrade={updateGrade}
                         options={gradePoints}
-                        className="order-3 w-1/3 m-1 sm:w-20"
+                        className="order-3 w-1/4 m-1 sm:w-20"
                     />
                 </div>
             );
@@ -80,7 +80,7 @@ function CalcSection(props) {
 
         let result = earnedCredit / totalCredit || 0;
 
-        setResult(result.toFixed(2));
+        setResult(result.toFixed(3));
         event.preventDefault();
     }
 

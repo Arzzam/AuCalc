@@ -134,10 +134,10 @@ function Select(props) {
             id={props.id}
         >
             <div className="relative text-left flex flex-wrap items-center border-solid border border-slate-300 group-hover:border-slate-500 group-focus:border-slate-500 rounded cursor-pointer justify-between min-h-fit transition-all">
-                <div className="px-2">
+                <div className="pl-2">
                     {selectedOption ? selectedOption : "Choose..."}
                 </div>
-                <div className="p-2 text-slate-300 group-hover:text-slate-500 group-focus:text-slate-500">
+                <div className="pr-2 py-1.5 text-slate-300 group-hover:text-slate-500 group-focus:text-slate-500">
                     <svg
                         height="20"
                         width="20"
