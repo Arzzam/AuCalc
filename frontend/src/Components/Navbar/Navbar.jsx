@@ -4,7 +4,7 @@ import Logo from "../Logo/Logo";
 import Container from "../Container/Container";
 import LogoFont from "../Logo/LogoFont";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid"
-import NavbarLink from "./Navlink";
+import NavbarLink from "./NavbarLink";
 // import NavOpen from "./NavOpen";
 
 // TODO: add blur on navpane.   68px
@@ -23,7 +23,7 @@ const Navbar = () => {
         <div
             className="relative h-px"
         >
-            <nav className="sticky top-0 z-20 py-1 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+            <nav className="sticky top-0 z-20 py-1 bg-gray-900 border-gray-700">
                 <Container
                     className="flex flex-wrap items-center justify-between lg:max-w-4xl"
                 >
@@ -33,11 +33,11 @@ const Navbar = () => {
                         to="/"
                         onClick={collapseNav}
                     >
-                        <Logo className="h-9 dark:text-white" />
-                        <LogoFont className="h-4 ml-2 dark:text-white" />
+                        <Logo className="h-9 text-white" />
+                        <LogoFont className="h-4 ml-2 text-white" />
                     </NavLink>
                     <button
-                        className="p-1 mx-2 border border-solid border-gray-600 text-gray-700 rounded-sm sm:hidden dark:text-gray-400 dark:hover:text-white"
+                        className="p-1 mx-2 border border-solid border-gray-600 rounded-sm sm:hidden text-gray-400 hover:text-white"
                         onClick={() => setNavExpand(!navExpand)}
                     >
                         {
@@ -55,7 +55,7 @@ const Navbar = () => {
                     <div
                         className={`sm:flex sm:m-0 m-2 sm:basis-auto basis-full item-center${navExpand ? "" : " hidden"}`}
                     >
-                        <ul className="flex flex-col py-2 text-center border border-gray-100 rounded-lg bg-gray-50 sm:flex-row sm:font-medium sm:border-0 sm:bg-white dark:bg-gray-800 sm:dark:bg-gray-900 dark:border-gray-700">
+                        <ul className="flex flex-col py-2 text-center border rounded-lg sm:flex-row sm:font-medium sm:border-0 bg-gray-800 sm:bg-gray-900 border-gray-700">
                             <NavbarLink to="/" child="Home" onClick={collapseNav} />
                             <NavbarLink to="/gpa" child="GPA" onClick={collapseNav} />
                             {/* <NavbarLink to="/cgpa" child="CGPA" onClick={collapseNav} /> */}
