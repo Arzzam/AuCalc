@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
@@ -8,8 +8,14 @@ import Gpa from "./Pages/Gpa";
 // import Cgpa2 from "./Pages/Cgpa2";
 // import Footer from "./Components/Footer/Footer";
 import About from "./Pages/About";
+import { loadCaptchaLib } from "./Components/Captcha";
 
 const App = () => {
+
+    useEffect(() => {
+        loadCaptchaLib();
+    }, [])
+
     return (
         <div>
             <Navbar />

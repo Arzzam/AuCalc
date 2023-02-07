@@ -45,9 +45,7 @@ const Gpa = () => {
                 apiObj = {
                     method: "post",
                     url: "degrees/",
-                    payload: {
-                        regulation_id: data.regulation_id,
-                    },
+                    payload: data,
                 };
                 title = "Degree";
                 storeOn = "degree_id";
@@ -57,9 +55,7 @@ const Gpa = () => {
                 apiObj = {
                     method: "post",
                     url: "departments/",
-                    payload: {
-                        degree_id: data.degree_id,
-                    },
+                    payload: data,
                 };
                 title = "Department";
                 storeOn = "department_id";
@@ -69,9 +65,7 @@ const Gpa = () => {
                 apiObj = {
                     method: "post",
                     url: "semesters/",
-                    payload: {
-                        department_id: data.department_id,
-                    },
+                    payload: data,
                 };
                 title = "Semester";
                 storeOn = "semester_id";
@@ -81,10 +75,7 @@ const Gpa = () => {
                 apiObj = {
                     method: "post",
                     url: "subjects/",
-                    payload: {
-                        department_id: data.department_id,
-                        semester_id: data.semester_id,
-                    },
+                    payload: data,
                 };
 
                 title = "Grade Points";
@@ -98,6 +89,7 @@ const Gpa = () => {
             <Section
                 api={apiObj}
                 title={"Select " + title}
+                action={title.toLowerCase()}
                 storeOn={storeOn}
                 updateData={storeOn && updateData}
                 goBack={setBack && goBack}
