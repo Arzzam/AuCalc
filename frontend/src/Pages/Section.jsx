@@ -3,7 +3,7 @@ import Progress from "../Components/Progress/Progress";
 import { fetchData } from "./api";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import RefreshIcon from "../Components/RefreshIcon";
-// import getToken from "../Components/Captcha";
+import getToken from "../Components/Captcha";
 
 function Section(props) {
 
@@ -52,19 +52,19 @@ function Section(props) {
 
     function onButtonClick(event) {
         clearState();
-        // getToken(
-        //     props.action,
-        //     (token) => {
+        getToken(
+            props.action,
+            (token) => {
                 props.updateData({
                     [props.storeOn]: event.target.id,
-                    // captcha_token: token
+                    captcha_token: token
                 })
-        //     },
-        //     () => {
-        //         setError(true);
-        //         setLoading(false);
-        //     }
-        // );
+            },
+            () => {
+                setError(true);
+                setLoading(false);
+            }
+        );
     }
 
     function renderButtons(data, onClick) {
