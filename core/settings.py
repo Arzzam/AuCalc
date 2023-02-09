@@ -56,8 +56,8 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ 
-            BASE_DIR / 'frontend' / 'build', 
+        'DIRS': [
+            BASE_DIR / 'frontend' / 'build',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -128,3 +128,11 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Captcha config
+
+RECAPTCHA_API_KEY = "AIzaSyBGj4Z9ANmTNNMgEWeiHcX0k1dOR48baSI"
+RECAPTCHA_SITE_KEY = "6LfHImYkAAAAADeRdkwEZCRXSf5OJnPEOFMYV9K5"
+RECAPTCHA_PROJECT_ID = "aucalc-test"
+RECAPTCHA_THRESHOLD_SCORE = 0.5

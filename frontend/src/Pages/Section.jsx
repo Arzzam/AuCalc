@@ -12,23 +12,36 @@ function Section(props) {
     const [response, setResponse] = useState();
 
     function loadData() {
-        fetchData({
-            method: props.api.method,
-            url: props.api.url,
-            data: props.api.payload,
-            onSuccess: (response) => {
-                setResponse(response.data);
+
+        getToken(
+            props.action,
+            (token) => {
+                fetchData({
+                    method: props.api.method,
+                    url: props.api.url,
+                    data: {
+                        ...props.api.payload,
+                        captcha_token: token
+                    },
+                    onSuccess: (response) => {
+                        setResponse(response.data);
+                    },
+                    onError: (err) => {
+                        setError(err);
+                    },
+                    onFinal: () => {
+                        setLoading(false);
+                    }
+                })
             },
-            onError: (err) => {
+            (err) => {
                 setError(err);
-            },
-            onFinal: () => {
                 setLoading(false);
             }
-        })
+        );
     }
 
-    useEffect(loadData, [props.api]);
+    useEffect(loadData, [props.api, props.action]);
 
     function clearState() {
         /* 
@@ -52,19 +65,9 @@ function Section(props) {
 
     function onButtonClick(event) {
         clearState();
-        getToken(
-            props.action,
-            (token) => {
-                props.updateData({
-                    [props.storeOn]: event.target.id,
-                    captcha_token: token
-                })
-            },
-            () => {
-                setError(true);
-                setLoading(false);
-            }
-        );
+        props.updateData({
+            [props.storeOn]: event.target.id,
+        });
     }
 
     function renderButtons(data, onClick) {

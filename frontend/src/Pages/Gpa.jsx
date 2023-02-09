@@ -89,7 +89,7 @@ const Gpa = () => {
             <Section
                 api={apiObj}
                 title={"Select " + title}
-                action={title.toLowerCase()}
+                action={title.toLowerCase().replaceAll(' ', '')}
                 storeOn={storeOn}
                 updateData={storeOn && updateData}
                 goBack={setBack && goBack}

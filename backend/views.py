@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from django.db.models import Sum
 
 from backend.serializer import *
+from .utils.captcha import is_captcha_valid
 
 
 @api_view(['GET'])
@@ -16,6 +17,10 @@ def regulation_list(request):
 @api_view(['POST'])
 def degree_list(request):
     data = JSONParser().parse(request)
+
+    if not is_captcha_valid(data["captcha_token"], 'degree'):
+        return HttpResponse(status=404)
+
     degrees = Degree.objects.filter(regulation=data['regulation_id'])
 
     if not degrees:
@@ -28,6 +33,10 @@ def degree_list(request):
 @api_view(['POST'])
 def department_list(request):
     data = JSONParser().parse(request)
+
+    if not is_captcha_valid(data["captcha_token"], 'department'):
+        return HttpResponse(status=404)
+
     departments = Department.objects.filter(degree=data['degree_id'])
 
     if not departments:
@@ -40,6 +49,10 @@ def department_list(request):
 @api_view(['POST'])
 def semester_list(request):
     data = JSONParser().parse(request)
+
+    if not is_captcha_valid(data["captcha_token"], 'semester'):
+        return HttpResponse(status=404)
+
     semesters = SemesterSubject.objects.filter(
         department=data['department_id']
     ).values('semester').distinct().count()
@@ -54,6 +67,10 @@ def semester_list(request):
 @api_view(['POST'])
 def semester_subject_list(request):
     data = JSONParser().parse(request)
+
+    if not is_captcha_valid(data["captcha_token"], 'gradepoints'):
+        return HttpResponse(status=404)
+
     semester_subs = SemesterSubject.objects.filter(
         department=data['department_id'],
         semester=data['semester_id']
@@ -69,6 +86,10 @@ def semester_subject_list(request):
 @api_view(['POST'])
 def semester_credit_list(request):
     data = JSONParser().parse(request)
+
+    # if not is_captcha_valid(data["captcha_token"], 'subject'):
+    #     return HttpResponse(status=404)
+
     semester_credits = SemesterSubject.objects \
         .filter(department=data['department_id']) \
         .values('semester') \
