@@ -1,62 +1,111 @@
-import React, { useEffect, useState } from "react";
-import { GpaButton } from "../Components/Button/Button";
-import Container, { Head1 } from "../Components/Container/Container";
-import axios from "axios";
+import { useState } from "react";
+import BodyContainer from "../Components/Container/BodyContainer";
+import SectionPane from "../Components/SectionPane";
+import Section from "./Section";
+import CalcSection from "./CalcSection";
 
 const Gpa = () => {
-  const [getReg, setGetReg] = useState([]);
-  // const [getDep, setGetDep] = useState([]);
-  // const [getSem, setGetSem] = useState([]);
+    const [page, setPage] = useState(1);
 
-  // const changeHandlerDep = () => {
-  //   setGetDep(getDep);
-  // };
+    const [data, setData] = useState({
+        regulation_id: null,
+        degree_id: null,
+        department_id: null,
+        semester_id: null,
+    });
 
-  // const changeHandlerReg = () => {
-  //   setGetReg(getReg);
-  // };
-  const reg = () => {
-    var config = {
-      method: "get",
-      url: "api/regulations/",
-      headers: {},
-    };
+    function updateData(obj) {
+        setData({ ...data, ...obj });
+        setPage(page + 1);
+    }
 
-    axios(config)
-      .then(function (response) {
-        setGetReg(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+    function goBack() {
+        setPage(page - 1 || 1);
+    }
 
-  useEffect(() => {
-    reg();
-  });
+    function conditionalRender() {
+        let apiObj = {
+            method: null,
+            url: null,
+            payload: {},
+        };
 
-  return (
-    <Container>
-      <div className=" flex-1 justify-self-center text-center">
-        <Head1>GPA</Head1>
-        <h4>Select Regulation</h4>
-      </div>
-      <div className=" flex-1 justify-self-center text-center">
-        {console.log(getReg)}
-        {getReg.map(({ id, data }) => {
-          console.log(data);
-          return (
-            <button
-              className="h-10 px-3 m-4 font-medium rounded-md bg-black text-white"
-              key={id}
-            >
-              {data}
-            </button>
-          );
-        })}
-      </div>
-    </Container>
-  );
+        let title, storeOn, setBack;
+
+        switch (page) {
+            case 1:
+                apiObj = {
+                    method: "get",
+                    url: "regulations/",
+                };
+                title = "Regulation";
+                storeOn = "regulation_id";
+                break;
+            case 2:
+                apiObj = {
+                    method: "post",
+                    url: "degrees/",
+                    payload: data,
+                };
+                title = "Degree";
+                storeOn = "degree_id";
+                setBack = true;
+                break;
+            case 3:
+                apiObj = {
+                    method: "post",
+                    url: "departments/",
+                    payload: data,
+                };
+                title = "Department";
+                storeOn = "department_id";
+                setBack = true;
+                break;
+            case 4:
+                apiObj = {
+                    method: "post",
+                    url: "semesters/",
+                    payload: data,
+                };
+                title = "Semester";
+                storeOn = "semester_id";
+                setBack = true;
+                break;
+            case 5:
+                apiObj = {
+                    method: "post",
+                    url: "subjects/",
+                    payload: data,
+                };
+
+                title = "Grade Points";
+                setBack = true;
+                break;
+            default:
+                return console.log("Reached end of page switch");
+        }
+
+        return (
+            <Section
+                api={apiObj}
+                title={"Select " + title}
+                action={title.toLowerCase().replaceAll(' ', '')}
+                storeOn={storeOn}
+                updateData={storeOn && updateData}
+                goBack={setBack && goBack}
+                finalPage={CalcSection}
+            />
+        );
+    }
+
+    return (
+        <BodyContainer>
+            <h1 className="text-center text-xl font-semibold my-2">
+                GPA
+            </h1>
+            <SectionPane>{conditionalRender()}</SectionPane>
+        </BodyContainer>
+    );
 };
 
 export default Gpa;

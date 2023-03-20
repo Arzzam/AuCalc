@@ -1,25 +1,33 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
-import About from "./Pages/About";
-import Cgpa from "./Pages/Cgpa";
-import Gpa from "./Pages/Gpa";
 import Home from "./Pages/Home";
+import Gpa from "./Pages/Gpa";
+// import Cgpa from "./Pages/Cgpa";
+// import Cgpa2 from "./Pages/Cgpa2";
+// import Footer from "./Components/Footer/Footer";
+import About from "./Pages/About";
+import { loadCaptchaLib } from "./Components/Captcha";
 
-function App() {
+const App = () => {
+
+    useEffect(() => {
+        loadCaptchaLib();
+    }, [])
 
     return (
-            <Router>
-                <Navbar />
-                <Routes>
-                    <Route exact path="/" element={<Home />} />
-                    <Route exact path="/gpa" element={<Gpa />} />
-                    <Route exact path="/cgpa" element={<Cgpa />} />
-                    <Route exact path="/about" element={<About />} />
-                </Routes>
-            </Router>
+        <div>
+            <Navbar />
+            <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/gpa" element={<Gpa />} />
+                {/* <Route exact path="/cgpa" element={<Cgpa2 />} /> */}
+                <Route exact path="/about" element={<About />} />
+            </Routes>
+            {/* <Footer /> */}
+        </div>
     );
-}
+};
 
 export default App;

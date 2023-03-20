@@ -1,55 +1,71 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Logo from "../../assets/Asset 1.png";
-import { OpenSvg, CloseSvg } from "./NavSvg";
+import Logo from "../Logo/Logo";
+import Container from "../Container/Container";
+import LogoFont from "../Logo/LogoFont";
+import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid"
+import NavbarLink from "./NavbarLink";
+// import NavOpen from "./NavOpen";
+
+// TODO: add blur on navpane.   68px
+// todo: theme button.
+// todo: add toggle animation.
+
 
 const Navbar = () => {
-  const [navbar, setNavbar] = useState(false);
-  const classNav = `block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 sm:hover:bg-transparent sm:border-0 sm:hover:text-blue-700 sm:p-0 dark:text-gray-400 sm:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white sm:dark:hover:bg-transparent `;
+    const [navExpand, setNavExpand] = useState(false);
 
-  return (
-    <nav className="sticky top-0 sm:px-8 px-5 w-full bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-      <div className="container lg:max-w-5xl justify-between mx-auto sm:items-center sm:flex">
-        <div className="flex items-center justify-between py-4">
-          <NavLink to="/">
-            <img
-              className="h-12"
-              src={Logo}
-              alt="Logo"
-            />
-          </NavLink>
-          <div className="sm:hidden">
-            <button
-              className="p-2 text-gray-700 rounded-sm outline-none focus:border-gray-400 focus:border"
-              onClick={() => setNavbar(!navbar)}
-            >
-              {navbar ? <CloseSvg /> : <OpenSvg />}
-            </button>
-          </div>
+    function collapseNav(event) {
+        setNavExpand(false);
+    }
+
+    return (
+        <div
+            className="relative h-px"
+        >
+            <nav className="sticky top-0 z-20 py-1 bg-gray-900 border-gray-700">
+                <Container
+                    className="flex flex-wrap items-center justify-between lg:max-w-4xl"
+                >
+
+                    <NavLink
+                        className="sm:mx-3 mx-2 my-2 flex flex-row items-center justify-center"
+                        to="/"
+                        onClick={collapseNav}
+                    >
+                        <Logo className="h-9 text-white" />
+                        <LogoFont className="h-4 ml-2 text-white" />
+                    </NavLink>
+                    <button
+                        className="p-1 mx-2 border border-solid border-gray-600 rounded-sm sm:hidden text-gray-400 hover:text-white"
+                        onClick={() => setNavExpand(!navExpand)}
+                    >
+                        {
+                            navExpand ?
+                                <XMarkIcon
+                                    className="h-7"
+                                />
+                                :
+                                <Bars3BottomRightIcon
+                                    className="h-7"
+                                />
+                        }
+                    </button>
+                    {/* <NavOpen onClick={collapseNav} navExpand={navExpand} /> */}
+                    <div
+                        className={`sm:flex sm:m-0 m-2 sm:basis-auto basis-full item-center${navExpand ? "" : " hidden"}`}
+                    >
+                        <ul className="flex flex-col py-2 text-center border rounded-lg sm:flex-row sm:font-medium sm:border-0 bg-gray-800 sm:bg-gray-900 border-gray-700">
+                            <NavbarLink to="/" child="Home" onClick={collapseNav} />
+                            <NavbarLink to="/gpa" child="GPA" onClick={collapseNav} />
+                            {/* <NavbarLink to="/cgpa" child="CGPA" onClick={collapseNav} /> */}
+                            <NavbarLink to="/about" child="About" onClick={collapseNav} />
+                        </ul>
+                    </div>
+                </Container>
+            </nav>
         </div>
-        <div>
-          <div
-            className={`flex-1 justify-self-center pb-3 mt-8 sm:pb-0 sm:mt-0 sm:block ${navbar ? "block " : "hidden"
-              }`}
-          >
-            <ul className="text-center flex flex-col bg-gray-50 rounded-lg border border-gray-100 sm:flex-row sm:space-x-8 sm:mt-0 text-md sm:font-medium sm:border-0 sm:bg-white dark:bg-gray-800 sm:dark:bg-gray-900 dark:border-gray-700">
-              <NavLink to="/#" activestyle className={`${classNav}`}>
-                Home
-              </NavLink>
-              <NavLink to="/gpa" activestyle className={`${classNav}`}>
-                GPA
-              </NavLink>
-              <NavLink to="/cgpa" activestyle className={`${classNav}`}>
-                CGPA
-              </NavLink>
-              <NavLink to="/about" activestyle className={`${classNav}`}>
-                About
-              </NavLink>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
+    );
 };
+
 export default Navbar;
